@@ -1,3 +1,7 @@
+# Mouse HWIDs; adjust
+$mouse1Hwid = ""
+$mouse2Hwid = ""
+
 function Toggle-MouseState {
     param (
         [string]$HardwareId,
@@ -18,10 +22,6 @@ function Toggle-MouseState {
         Disable-PnpDevice -InstanceId $deviceInstancePath -Confirm:$false
     }
 }
-
-# Mouse HWIDs; adjust
-$mouse1Hwid = "HID\VID_046D&PID_C547&REV_0402&MI_00"
-$mouse2Hwid = "HID\VID_0483&PID_A3CF&REV_0200"
 
 $mouse1 = Get-PnpDevice | Where-Object { $_.HardwareID -like "*$mouse1Hwid*" }
 if ($mouse1.Status -eq "OK") {
